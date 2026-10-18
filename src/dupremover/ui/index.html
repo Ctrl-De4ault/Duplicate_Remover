@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DupRemover</title><link rel="stylesheet" href="style.css"></head><body>
+<aside class="side"><div class="brand">DupRemover</div><div class="lbl">Profiles</div>
+<div id="plist"></div><button class="link" id="newp">+ New profile</button></aside>
+<main>
+<section id="home" class="view active">
+<h1>Find duplicate files</h1><p class="sub">Compares file contents, so names and locations don’t matter.</p>
+<div class="card"><div class="row"><h3>Folders</h3><button class="btn" id="addf">Add folders</button></div><div id="folders" class="chips"></div></div>
+<div class="card grid">
+<label>Keep<select id="keep"><option value="keep_oldest">Oldest copy</option><option value="keep_newest">Newest copy</option><option value="keep_shortest_path">Shortest path</option></select></label>
+<label>Action<select id="action"><option value="recycle">Move to Recycle Bin</option><option value="quarantine">Move to quarantine folder</option><option value="hardlink">Replace with hardlink</option><option value="symlink">Replace with symlink</option><option value="delete">Delete permanently</option></select></label>
+<label>File types<input id="exts" placeholder="All, or e.g. jpg, png"></label>
+<label>Profile name<input id="pname" placeholder="Untitled"></label></div>
+<div class="card"><div class="row"><h3>Protected folders</h3><button class="btn" id="addp">Protect a folder</button></div><div id="protect" class="chips"></div><p class="hint">Files in protected folders are never removed.</p></div>
+<div class="actions"><button class="btn" id="save">Save profile</button><button class="btn" id="quick" hidden>Run now</button><button class="btn primary" id="scan">Scan</button></div>
+</section>
+<section id="scanning" class="view center"><div class="ring"></div><h2 id="stitle">Scanning…</h2><p id="stext" class="sub"></p><div class="bar"><i id="sbar"></i></div><button class="btn" id="cancel" hidden>Cancel</button></section>
+<section id="review" class="view"><h1 id="rtitle"></h1><p class="sub" id="rsub"></p><div id="groups"></div><button class="btn" id="more" hidden>Show more</button>
+<div class="dock"><button class="btn" id="back">Back</button><button class="btn primary" id="clean">Clean up</button></div></section>
+<section id="done" class="view center"><div class="check">✓</div><h2 id="dtitle"></h2><p class="sub" id="dtext"></p><div class="actions"><button class="btn" id="undo" hidden>Undo</button><button class="btn primary" id="again">Done</button></div></section>
+</main><div id="toast"></div><script src="app.js"></script></body></html>

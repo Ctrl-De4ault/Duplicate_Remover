@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dupremover"
+dynamic = ["version"]
+description = "Content-based duplicate file remover with customizable rules and one-click profiles"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.11"
+dependencies = [
+    "blake3>=0.4",
+    "send2trash>=1.8",
+    "pyyaml>=6.0",
+    "pywebview>=5.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "ruff>=0.5"]
+build = ["pyinstaller>=6.0"]
+
+[project.gui-scripts]
+dupremover = "dupremover.app:main"
+
+[tool.setuptools.dynamic]
+version = { attr = "dupremover.__version__" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+dupremover = ["ui/*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.ruff.lint]
+select = ["F"]
